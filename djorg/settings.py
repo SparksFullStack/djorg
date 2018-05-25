@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 
 import os
 from decouple import config
+from socket import gethostname, gethostbyname
 import dj_database_url
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -34,7 +35,7 @@ DEBUG = config('DEBUG', cast=bool)
 #//Reverting back to the pre-decouple
 # DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '172.112.95.173', '[::1]']
+ALLOWED_HOSTS = [gethostname(), gethostbyname(gethostname())]
 
 # Application definition
 
