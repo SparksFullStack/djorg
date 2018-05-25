@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 
 import os
 from decouple import config
+import dj_database_url
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -25,6 +26,7 @@ SECRET_KEY = config('SECRET_KEY')
 
 #//Reverting back to the pre-decouple
 # SECRET_KEY = '69+52z0%mg($r(td_jo%9659ynhbuwd-%vsedtgjw-^2i_v1^t'
+DATABASES['default'] = dj_database_url.config(default='sqlite:///db.sqlite3')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', cast=bool)
@@ -32,7 +34,7 @@ DEBUG = config('DEBUG', cast=bool)
 #//Reverting back to the pre-decouple
 # DEBUG = True
 
-ALLOWED_HOSTS = []
+# ALLOWED_HOSTS = ['localhost', '127.0.0.1', '[::1]']
 
 
 # Application definition
@@ -48,6 +50,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
