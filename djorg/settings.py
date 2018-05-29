@@ -35,12 +35,14 @@ DEBUG = config('DEBUG', cast=bool)
 #//Reverting back to the pre-decouple
 # DEBUG = True
 
-ALLOWED_HOSTS = [gethostname(), gethostbyname(gethostname())]
+ALLOWED_HOSTS = [‘0.0.0.0’, ‘localhost’]
 
 # Application definition
 
 INSTALLED_APPS = [
     'bookmarks',
+    'notes',
+    'rest_framework',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -129,3 +131,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# Django REST framework boilerplate code
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES':
+        #uses standard django auth or allows for read only access to notes
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly',
+}
+
+newDict = oldDict.copy()
