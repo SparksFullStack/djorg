@@ -23,19 +23,19 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = config('SECRET_KEY')
+# SECRET_KEY = config('SECRET_KEY')
 
 #//Reverting back to the pre-decouple
-# SECRET_KEY = '69+52z0%mg($r(td_jo%9659ynhbuwd-%vsedtgjw-^2i_v1^t'
-DATABASES['default'] = dj_database_url.config(default='sqlite:///db.sqlite3')
+SECRET_KEY = '69+52z0%mg($r(td_jo%9659ynhbuwd-%vsedtgjw-^2i_v1^t'
+# DATABASES['default'] = dj_database_url.config(default='sqlite:///db.sqlite3')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = config('DEBUG', cast=bool)
+# DEBUG = config('DEBUG', cast=bool)
 
 #//Reverting back to the pre-decouple
-# DEBUG = True
+DEBUG = True
 
-ALLOWED_HOSTS = [‘0.0.0.0’, ‘localhost’]
+# ALLOWED_HOSTS = [‘0.0.0.0’, ‘localhost’]
 
 # Application definition
 
@@ -138,5 +138,3 @@ REST_FRAMEWORK = {
         #uses standard django auth or allows for read only access to notes
         'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly',
 }
-
-newDict = oldDict.copy()
